@@ -22,6 +22,20 @@ app.get('/magic/Will%20I%20Be%20A%20Millionaire', (req,res) => {
     res.send(`<h1>${ballResponses[Math.floor(Math.random() * ballResponses.length)]}</h1>`)
 })
 
+//Fibonacci
+app.get('/:fibonacci', (req, res) => {
+    // res.status(200).json(`<title>Fibonacci</title>`)
+    let checkFibonacci = req.params.fibonacci
+    if (isSquare(5*(checkFibonacci*checkFibonacci)-4) || isSquare(5*(checkFibonacci*checkFibonacci)+4)) {
+        res.send(`<h1>Very good. It is Fibonacci</h1>`)
+    } res.send(`<h1>I can tell this is not a fibonacci number</h1>`)
+
+    function isSquare(n) {
+        return n > 0 && Math.sqrt(n) % 1 === 0;
+    };
+})
+
+
 app.listen(3001, function() {
     console.log('listening to port 3001')
 })
